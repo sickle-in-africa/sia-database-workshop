@@ -1,5 +1,4 @@
-# DATA QUALITY ASSURANCE IN R
-## SickleInAfrica Database workshop | December 2021
+# SickleInAfrica Database workshop | December 2021
 
 This repository is provides a simple example script that demonstrates a simple data cleaning procedure. 
 
