@@ -1,6 +1,6 @@
 # SickleInAfrica Database workshop | December 2021
 
-This repository is provides a simple example script that demonstrates a simple data cleaning procedure. 
+This repository provides a simple example script that demonstrates a simple data cleaning procedure. 
 
 The data is taken from the UCI machine learning library:
 https://archive.ics.uci.edu/ml/datasets/heart+disease
