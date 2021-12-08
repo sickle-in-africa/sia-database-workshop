@@ -10,6 +10,11 @@ heart_disease_data <- read.csv(
 # peak at the data set
 head(heart_disease_data)
 str(heart_disease_data)
+# -- it looks as though most of these variables have been classes either as "num" (number) or "char" (character)
+# -- but this can't be right; if we look at the data dictionary [here](https://archive.ics.uci.edu/ml/datasets/heart+disease)
+# -- then we see that some of these variables are categorical. 
+# -- we can also even see some variables that R should have interpreted as "num" have been classed as "cahr". Why?
+# -- we will come back to this.
 
 # give columns meaningful names
 colnames(heart_disease_data) <- c(
@@ -29,8 +34,13 @@ colnames(heart_disease_data) <- c(
     'num')
 
 # find all missing values and map all missing value markers to NA
+# -- if we scan through the columns we find no obvious missing values,
+# -- but if we look closely we see a mysterious "?" value in the "ca"
+# -- and "thal" columns. So it seems that missing values in the raw 
+# -- data here have been coded as "?" not NA. We need to fix this. 
 heart_disease_data$ca[heart_disease_data$ca=="?"] <- NA
 heart_disease_data$thal[heart_disease_data$thal=="?"] <- NA
+# -- note that NA and "NA" are not the same in R!
 
 # change variable types to factors where necessary
 heart_disease_data$sex <- as.factor(ifelse(heart_disease_data$sex==1,"M","F"))
@@ -41,6 +51,12 @@ heart_disease_data$exang <- as.factor(heart_disease_data$exang)
 heart_disease_data$slope <- as.factor(heart_disease_data$slope)
 heart_disease_data$ca <- as.integer(as.character(heart_disease_data$ca))
 heart_disease_data$thal <- as.factor(as.integer(as.character(droplevels(heart_disease_data$thal))))
+# -- why do we bother with this? because R functions are "smart", in the sense
+# -- that if we try to compute things like means or standard deviations, but 
+# -- our chosen variable is of "char" type, then it will throw an error. 
+# -- More importantly, the more advanced regression or chi-square test tools for
+# -- example behave differently depending on the types of their input. This
+# -- is *very important* for the validity of your downstream analysis. 
 
 # check for outliers in continuous variables
 boxplot(heart_disease_data$age)
