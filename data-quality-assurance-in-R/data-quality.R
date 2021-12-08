@@ -50,7 +50,7 @@ heart_disease_data$restecg <- as.factor(heart_disease_data$restecg)
 heart_disease_data$exang <- as.factor(heart_disease_data$exang)
 heart_disease_data$slope <- as.factor(heart_disease_data$slope)
 heart_disease_data$ca <- as.integer(as.character(heart_disease_data$ca))
-heart_disease_data$thal <- as.factor(as.integer(as.character(droplevels(heart_disease_data$thal))))
+heart_disease_data$thal <- droplevels(as.factor(as.integer(as.character(heart_disease_data$thal))))
 # -- why do we bother with this? because R functions are "smart", in the sense
 # -- that if we try to compute things like means or standard deviations, but 
 # -- our chosen variable is of "char" type, then it will throw an error. 
