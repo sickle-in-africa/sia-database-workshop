@@ -1,4 +1,4 @@
-# SickleInAfrica Database workshop | December 2021
+# SickleInAfrica Database workshop 
 
 This repository provides a simple example script that demonstrates a simple data cleaning procedure. 
 
